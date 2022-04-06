@@ -7,8 +7,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Student[] students = new Student[4];
-        students[0] = new Student("Trường", 18, "12 Trần Phú", 9);
-        students[1] = new Student("Khoa", 17, "12 Trần Phú", 9);
+        students[0] = new Student("Long", 18, "Đà Nẵng", 9);
+        students[1] = new Student("Hương", 17, "Vĩnh Phúc", 9);
         System.out.println(Arrays.toString(students));
 
         for (int i = 2; i < students.length; i++) {
