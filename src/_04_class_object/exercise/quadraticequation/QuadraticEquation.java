@@ -1,4 +1,4 @@
-package _04_class_object.exercise.QuadraticEquation;
+package _04_class_object.exercise.quadraticequation;
 
 public class QuadraticEquation {
    double a,b,c;

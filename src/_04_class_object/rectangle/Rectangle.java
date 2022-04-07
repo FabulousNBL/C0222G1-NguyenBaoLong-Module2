@@ -1,4 +1,4 @@
-package _04_class_object.Rectangle;
+package _04_class_object.rectangle;
 
 public class Rectangle {
     double width, height;

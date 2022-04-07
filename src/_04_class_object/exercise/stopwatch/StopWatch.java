@@ -1,4 +1,4 @@
-package _04_class_object.exercise.StopWatch;
+package _04_class_object.exercise.stopwatch;
 
 import java.util.Calendar;
 

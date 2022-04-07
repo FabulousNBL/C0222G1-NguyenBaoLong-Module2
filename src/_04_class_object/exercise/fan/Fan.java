@@ -1,4 +1,4 @@
-package _04_class_object.exercise.Fan;
+package _04_class_object.exercise.fan;
 
 
 
