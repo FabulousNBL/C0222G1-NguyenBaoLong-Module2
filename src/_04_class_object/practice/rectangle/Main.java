@@ -1,4 +1,4 @@
-package _04_class_object.rectangle;
+package _04_class_object.practice.rectangle;
 
 import java.util.Scanner;
 
