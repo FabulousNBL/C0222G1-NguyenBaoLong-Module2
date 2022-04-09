@@ -21,7 +21,9 @@ public class Main {
             System.out.println("3. Thêm giáo viên");
             System.out.println("4. Xóa học sinh");
             System.out.println("5. Xóa giáo viên");
-            System.out.println("6. Thoát");
+            System.out.println("6. Danh sách học sinh");
+            System.out.println("7. Danh sách giáo viên");
+            System.out.println("8. Thoát");
             int choose = Integer.parseInt(input.nextLine());
             switch (choose) {
                 case 1:
@@ -36,7 +38,12 @@ public class Main {
                 case 5:
                     deleteTeacher();
                 case 6:
-                    System.exit(6);
+                    studentList();
+                    break;
+                case 7:
+                    teacherList();
+                case 8:
+                    System.exit(8);
             }
         }
     }
@@ -45,6 +52,24 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             if (people[i] != null) {
                 System.out.println(people[i]);
+            }
+        }
+    }
+
+    public static void studentList() {
+        for (Person item : people) {
+            if (item instanceof Student) {
+                Student student = (Student) item;
+                System.out.println(student.toString());
+            }
+        }
+    }
+
+    public static void teacherList() {
+        for (Person item : people) {
+            if (item instanceof Teacher) {
+                Teacher teacher = (Teacher) item;
+                System.out.println(teacher.toString());
             }
         }
     }
