@@ -1,12 +1,11 @@
 package _07_abstraction.practice.deachien;
 
-
-
 import java.util.Scanner;
 
 public class Main {
-    static Scanner input = new Scanner(System.in);
     public static Person[] people = new Person[10];
+    static Scanner input = new Scanner(System.in);
+
 
     public static void main(String[] args) {
         people[0] = new Student("Long", 20, true, 8);
@@ -31,17 +30,22 @@ public class Main {
                     break;
                 case 2:
                     addStudent();
+                    break;
                 case 3:
                     addTeacher();
+                    break;
                 case 4:
                     deleteStudent();
+                    break;
                 case 5:
                     deleteTeacher();
+                    break;
                 case 6:
                     studentList();
                     break;
                 case 7:
                     teacherList();
+                    break;
                 case 8:
                     System.exit(8);
             }
@@ -56,23 +60,8 @@ public class Main {
         }
     }
 
-    public static void studentList() {
-        for (Person item : people) {
-            if (item instanceof Student) {
-                Student student = (Student) item;
-                System.out.println(student.toString());
-            }
-        }
-    }
 
-    public static void teacherList() {
-        for (Person item : people) {
-            if (item instanceof Teacher) {
-                Teacher teacher = (Teacher) item;
-                System.out.println(teacher.toString());
-            }
-        }
-    }
+
 
     public static void addStudent() {
         System.out.println("Enter student's name: ");
@@ -134,9 +123,7 @@ public class Main {
                 for (int j = i; j < 10 - 1; j++) {
                     people[j] = people[j + 1];
                 }
-            }else {
-                System.out.println("không có tên trong danh sách!");
-                break;
+
             }
         }
         display();
@@ -147,16 +134,32 @@ public class Main {
         String name = input.nextLine();
         for (int i = 0; i < 10; i++) {
             if (people[i] == null) {
-                break;
+                    break;
             } else if (name.equals(people[i].getName()) && people[i] instanceof Teacher) {
                 for (int j = i; j < 10 - 1; j++) {
                     people[j] = people[j + 1];
                 }
-            }else {
-                System.out.println("không có tên trong danh sách!");
-                break;
+
             }
         }
         display();
+    }
+    public static void studentList() {
+        for (Person item : people) {
+            if (item instanceof Student) {
+                Student student = (Student) item;
+                System.out.println(student.toString());
+            }
+        }
+
+    }
+    public static void teacherList() {
+        for (Person item : people) {
+            if (item instanceof Teacher) {
+                Teacher teacher = (Teacher) item;
+                System.out.println(teacher.toString());
+            }
+        }
+       
     }
 }
