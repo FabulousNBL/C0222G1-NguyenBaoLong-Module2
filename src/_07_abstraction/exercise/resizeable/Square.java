@@ -1,6 +1,6 @@
 package _07_abstraction.exercise.resizeable;
 
-public class Square extends Shape implements Resizeable{
+public class Square extends Shape {
     private double side=1.0;
 
     public Square(){
@@ -37,8 +37,7 @@ public class Square extends Shape implements Resizeable{
 
     @Override
     public String toString() {
-        return "Square{" +
-                "side=" + getSide() +"\t"+super.toString()+
-                '}';
+        return "Square: "+"Side: "+ side+"\t"+"\t"+ super.toString()+"\t"
+                +"\t"+ "Area: "+ this.getArea()+"\n";
     }
 }

@@ -77,7 +77,7 @@ public class Main {
         System.out.println("Enter student's point: ");
         int point = Integer.parseInt(input.nextLine());
         int num = 0;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < people.length; i++) {
             if (people[i] == null) {
                 num = i;
                 break;
@@ -103,7 +103,7 @@ public class Main {
         }
         int num = 0;
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < people.length; i++) {
             if (people[i] == null) {
                 num = i;
                 break;
@@ -116,11 +116,11 @@ public class Main {
     public static void deleteStudent() {
         System.out.println("Enter the name that you want to delete: ");
         String name = input.nextLine();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < people.length; i++) {
             if (people[i] == null) {
                 break;
             } else if (name.equals(people[i].getName()) && people[i] instanceof Student) {
-                for (int j = i; j < 10 - 1; j++) {
+                for (int j = i; j < people.length - 1; j++) {
                     people[j] = people[j + 1];
                 }
 
@@ -132,14 +132,13 @@ public class Main {
     public static void deleteTeacher(){
         System.out.println("Enter the name that you want to delete: ");
         String name = input.nextLine();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < people.length; i++) {
             if (people[i] == null) {
                     break;
             } else if (name.equals(people[i].getName()) && people[i] instanceof Teacher) {
-                for (int j = i; j < 10 - 1; j++) {
+                for (int j = i; j < people.length - 1; j++) {
                     people[j] = people[j + 1];
                 }
-
             }
         }
         display();

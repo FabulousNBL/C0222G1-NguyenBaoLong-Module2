@@ -1,6 +1,6 @@
 package _07_abstraction.exercise.resizeable;
 
-public class Circle extends Shape implements Resizeable{
+public class Circle extends Shape {
     private double radius=1.0;
 
     public Circle(){}
@@ -32,9 +32,8 @@ public class Circle extends Shape implements Resizeable{
 
     @Override
     public String toString() {
-        return "Circle{" +
-                "radius=" + radius + ", which is a subclass of"+super.toString()+
-                '}';
+        return "Circle: "+"Radius: " + radius+"\t"+"\t"+ super.toString()
+                +"\t"+"\t"+ "Area:"+this.getArea()+"\n";
     }
 
     @Override

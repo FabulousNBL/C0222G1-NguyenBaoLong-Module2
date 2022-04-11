@@ -27,15 +27,11 @@ public abstract class Shape implements Resizeable {
         this.filled = filled;
     }
 
-
+    public abstract double getArea();
 
     @Override
     public String toString() {
-        return "Shape{" +
-                "color='" + color + '\'' +
-                ", filled=" + filled +
-                '}';
+        return "\t"+"\t"+"Color: "+ color+"\t"+"\t"+" Filled: "+ filled;
     }
-     @Override
-    public abstract void resize(double percent);
+
 }

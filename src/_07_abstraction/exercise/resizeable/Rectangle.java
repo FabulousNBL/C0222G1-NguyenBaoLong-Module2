@@ -1,6 +1,6 @@
 package _07_abstraction.exercise.resizeable;
 
-public class Rectangle extends Shape implements Resizeable {
+public class Rectangle extends Shape  {
     private double width = 1.0;
     private double length = 1.0;
 
@@ -44,12 +44,8 @@ public class Rectangle extends Shape implements Resizeable {
 
     @Override
     public String toString() {
-        return "A Rectangle with width="
-                + getWidth()
-                + " and length="
-                + getLength()
-                + ", which is a subclass of "
-                + super.toString();
+        return "Rectangle: "+"Width: "+ width+"\t"+"\t"+ "Length: "+ length+
+                super.toString()+"\t"+"\t"+ "Area: "+ this.getArea()+"\n";
     }
 
     @Override
