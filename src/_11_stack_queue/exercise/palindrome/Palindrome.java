@@ -1,4 +1,4 @@
-package _11_stack_queue.exercise.reverse;
+package _11_stack_queue.exercise.palindrome;
 
 import java.util.LinkedList;
 import java.util.Queue;

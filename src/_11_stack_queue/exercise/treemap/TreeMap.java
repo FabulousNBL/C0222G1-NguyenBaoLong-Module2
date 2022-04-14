@@ -1,4 +1,4 @@
-package _11_stack_queue.exercise.reverse;
+package _11_stack_queue.exercise.treemap;
 
 import java.util.Scanner;
 import java.util.Set;
