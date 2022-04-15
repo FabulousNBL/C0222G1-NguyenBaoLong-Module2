@@ -2,7 +2,7 @@ package _12_java_collection_framework.exercise.product_management;
 
 import java.util.Comparator;
 
-public class Product implements Comparable<Product> {
+public class Product  {
     private String name;
     private int id;
     private int price;
@@ -50,14 +50,5 @@ public class Product implements Comparable<Product> {
                 '}';
     }
 
-    @Override
-    public int compareTo(Product o) {
-        if (id>o.getId()){
-            return 1;
-        }else if (id<o.getId()){
-            return -1;
-        }else {
-            return 0;
-        }
-    }
+
 }
