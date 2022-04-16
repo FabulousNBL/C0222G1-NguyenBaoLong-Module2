@@ -75,21 +75,20 @@ public class ProductManagement {
     }
 
     public static void updateProduct() {
+
+        System.out.println("Nhập id sản phẩm");
+        int id = Integer.parseInt(input.nextLine());
         System.out.println("Nhập tên mới sản phẩm");
         String name = input.nextLine();
-        System.out.println("Nhập id mới sản phẩm");
-        int id = Integer.parseInt(input.nextLine());
         System.out.println("Nhập giá mới sản phẩm");
         int price = Integer.parseInt(input.nextLine());
-        boolean flag = true;
+        boolean flag = false;
         for (int i = 0; i < arrayList.size(); i++) {
             if (arrayList.get(i).getId() == id) {
                 arrayList.remove(i);
                 arrayList.add(new Product(name, id, price));
                 flag = true;
                 break;
-            } else {
-                flag = false;
             }
         }
         if (!flag) {
@@ -104,6 +103,7 @@ public class ProductManagement {
         for (int i = 0; i < arrayList.size(); i++) {
             if (arrayList.get(i).getId() == id) {
                 arrayList.remove(i);
+                break;
             }
         }
         display();
@@ -112,16 +112,12 @@ public class ProductManagement {
     public static void searchByName() {
         System.out.println("nhập tên muốn tìm");
         String name = input.nextLine();
-        for (Product p : arrayList) {
-            if (p.getName().equals(name)) {
-                System.out.println("có sản phẩm này " + p.getName());
-                break;
-            } else {
-                System.out.println("không có sản phẩm này");
+        for (int i = 0; i <arrayList.size() ; i++) {
+            if (arrayList.get(i).getName().contains(name)){
+                System.out.println(arrayList.get(i));
 
             }
         }
-
     }
 
     public static void sortIncrease() {

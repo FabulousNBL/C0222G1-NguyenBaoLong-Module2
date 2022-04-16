@@ -3,7 +3,7 @@ package _11_stack_queue.exercise.treemap;
 import java.util.Scanner;
 import java.util.Set;
 
-public class TreeMap {
+public class CountString {
     public static void main(String[] args) {
         Scanner input= new Scanner(System.in);
         String str= input.nextLine();

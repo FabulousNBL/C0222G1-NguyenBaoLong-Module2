@@ -13,21 +13,21 @@ public class Main {
 
         Collections.sort(people);
 
-        Queue<Person>Nam= new LinkedList<>();
-        Queue<Person>Nu= new LinkedList<>();
+        Queue<Person>man= new LinkedList<>();
+        Queue<Person>woman= new LinkedList<>();
         for (int i = 0; i <people.size() ; i++) {
             if (people.get(i).isGender()){
-                Nam.add(people.get(i));
+                man.add(people.get(i));
             }else {
-                Nu.add(people.get(i));
+                woman.add(people.get(i));
             }
         }
 
         for (int i = 0; i < people.size(); i++) {
-            if (!Nu.isEmpty()){
-                people.set(i,Nu.poll());
+            if (!woman.isEmpty()){
+                people.set(i,woman.poll());
             }else {
-                people.set(i,Nam.poll());
+                people.set(i,man.poll());
             }
         }
         System.out.println(people);
