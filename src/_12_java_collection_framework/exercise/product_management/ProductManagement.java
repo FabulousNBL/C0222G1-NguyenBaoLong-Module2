@@ -11,7 +11,7 @@ public class ProductManagement {
         arrayList.add(new Product("Coca", 1, 15000));
         arrayList.add(new Product("Fanta", 2, 16000));
         arrayList.add(new Product("Sprite", 3, 25000));
-        arrayList.add(new Product("Pepsi", 3, 18000));
+        arrayList.add(new Product("Pepsi", 4, 18000));
     }
 
     static Scanner input = new Scanner(System.in);
@@ -19,12 +19,23 @@ public class ProductManagement {
     public void addProduct() {
         System.out.println("Nhập id sản phẩm");
         int id= Integer.parseInt(input.nextLine());
-        System.out.println("Nhập tên sản phẩm");
-        String name = input.nextLine();
-        System.out.println("Nhập giá sản phẩm");
-        int price = Integer.parseInt(input.nextLine());
-        arrayList.add(new Product(name, id, price));
-        display();
+        boolean flag= true;
+        for (int i = 0; i <arrayList.size() ; i++) {
+            if (arrayList.get(i).getId()==id){
+                flag=false;
+            }
+        }
+        if (!flag){
+            System.out.println("Đã có sản phẩm này");
+        }else {
+            System.out.println("Nhập tên sản phẩm");
+            String name = input.nextLine();
+            System.out.println("Nhập giá sản phẩm");
+            int price = Integer.parseInt(input.nextLine());
+            arrayList.add(new Product(name, id, price));
+            display();
+        }
+
     }
 
     public void display() {
