@@ -1,5 +1,6 @@
 package _14_sort_algorithms.excercise.edit;
 
+
 import java.util.Arrays;
 
 public class EditIllustration {
@@ -13,6 +14,7 @@ public class EditIllustration {
                 j--;
             }
             arr[j] = num;
+            System.out.println(Arrays.toString(arr));
         }
     }
 }
