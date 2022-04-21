@@ -10,18 +10,19 @@ public class Main {
         if (a <= 0 || b <= 0 || c <= 0) {
             throw new IllegalTriangleException("Không được nhập số nhỏ hơn 0");
         }
-    }
-    public static void compare(int a, int b, int c)throws IllegalTriangleException{
         if (a + b < c || b + c < a || a + c < b) {
             throw new IllegalTriangleException("bạn đã nhập sai độ dai cạnh");
+        }else {
+            System.out.println("3 cạnh là 1 tam giác");
         }
     }
+
     public static void main(String[] args) {
-        boolean flag= true;
+
         int a, b, c;
-        while (flag) {
+        while (true) {
             try {
-                flag=false;
+
                 System.out.println("Nhập cạnh a");
                 a = Integer.parseInt(sc.nextLine());
                 System.out.println("Nhập cạnh b");
@@ -29,13 +30,14 @@ public class Main {
                 System.out.println("Nhập cạnh c");
                 c = Integer.parseInt(sc.nextLine());
                 negative(a, b, c);
-                compare(a,b,c);
-            }catch (NumberFormatException e){
-                System.out.println("Mời nhập số");
-                flag= true;
+
+                break;
             }catch (IllegalTriangleException e) {
                 System.out.println(e.getMessage());
-                flag=true;
+            }catch (NumberFormatException e){
+                System.out.println("Mời nhập số");
+            }catch (Exception e){
+                e.printStackTrace();
             }
         }
     }
