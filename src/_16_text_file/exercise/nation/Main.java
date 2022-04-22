@@ -9,10 +9,10 @@ public class Main {
         List<Nation> nationList = new ArrayList<>();
         ReadAndWrite readAndWrite = new ReadAndWrite();
         try {
-            List<String[]> listStr = readAndWrite.readFile("src\\_16_text_file\\exercise\\nation\\result.csv");
-
+            List<String[]> listStr = readAndWrite.readFile("src\\_16_text_file\\exercise\\nation\\result.txt.csv");
+            Nation nation;
             for (String[] item : listStr) {
-                Nation nation = new Nation((item[0]), item[1], item[2]);
+                nation = new Nation((item[0]), item[1], item[2]);
                 nationList.add(nation);
             }
         } catch (IOException e) {

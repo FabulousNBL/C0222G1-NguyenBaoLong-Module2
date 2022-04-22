@@ -47,9 +47,9 @@ public class ReadAndWrite {
     }
 
     public static void main(String[] args) throws IOException {
-        List<String> strings = readFile("src\\_16_text_file\\exercise\\copy_file_text\\source");
+        List<String> strings = readFile("src\\_16_text_file\\exercise\\copy_file_text\\source.txt");
         for (int i = 0; i < strings.size() ; i++) {
-            writeFile("src\\_16_text_file\\exercise\\copy_file_text\\result",strings.get(i));
+            writeFile("src\\_16_text_file\\exercise\\copy_file_text\\result.txt",strings.get(i));
         }
     }
 }
