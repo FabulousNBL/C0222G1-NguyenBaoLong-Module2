@@ -31,6 +31,7 @@ public class Main {
             System.out.println(student);
         }
     }
+
     public static List<Student> readToFile(String path){
         List<Student> students= new ArrayList<>();
         try{
