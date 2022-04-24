@@ -9,6 +9,7 @@ public class Main {
     static ReadAndWrite readAndWrite = new ReadAndWrite();
     static Scanner scanner = new Scanner(System.in);
     static List<Product> products = new ArrayList<>();
+    static final String FILE_NAME="src\\_17_binary_file_serialization\\excercise\\product_management\\product.txt";
 
     static {
         products.add(new Product("1a", "coca", "cola", 150000));
@@ -17,7 +18,7 @@ public class Main {
         products.add(new Product("4a", "pepsi", "pepsi", 150000));
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         while (true) {
             System.out.println("Menu");
             System.out.println("1. Display list product.txt");
@@ -52,15 +53,14 @@ public class Main {
     }
 
     public static void display() throws IOException {
-
-        products = readAndWrite.readToFile("src\\_17_binary_file_serialization\\excercise\\product_management\\product.txt");
+        products= readAndWrite.readToFile(FILE_NAME);
         for (Product item : products) {
             System.out.println(item);
         }
     }
 
     public static void addNewProduct() throws IOException {
-
+        products= readAndWrite.readToFile(FILE_NAME);
         System.out.println("Nhập id sản phẩm");
         String idP = scanner.nextLine();
         boolean flag = false;
@@ -88,16 +88,17 @@ public class Main {
         }
     }
 
-    public static void searchByName() {
+    public static void searchByName() throws IOException {
+        products= readAndWrite.readToFile(FILE_NAME);
         System.out.println("Nhập tên sản phẩm");
         String name = scanner.nextLine();
         boolean flag = true;
 
         for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getName().equals(name)) {
+            if (products.get(i).getName().toLowerCase().contains(name.toLowerCase())) {
                 System.out.println(products.get(i));
                 flag = false;
-                break;
+
             }
         }
         if (flag) {
