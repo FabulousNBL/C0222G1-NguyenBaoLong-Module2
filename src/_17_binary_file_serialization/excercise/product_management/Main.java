@@ -68,7 +68,6 @@ public class Main {
 
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getId().contains(idP)) {
-
                 flag = true;
                 break;
             }
@@ -84,7 +83,7 @@ public class Main {
             int price = Integer.parseInt(scanner.nextLine());
             Product product = new Product(idP, name, brand, price);
             products.add(product);
-            readAndWrite.writeToFile("src\\_17_binary_file_serialization\\excercise\\product_management\\product.txt", products);
+            readAndWrite.writeToFile(FILE_NAME, products);
         }
     }
 
@@ -93,12 +92,10 @@ public class Main {
         System.out.println("Nhập tên sản phẩm");
         String name = scanner.nextLine();
         boolean flag = true;
-
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getName().toLowerCase().contains(name.toLowerCase())) {
                 System.out.println(products.get(i));
                 flag = false;
-
             }
         }
         if (flag) {
