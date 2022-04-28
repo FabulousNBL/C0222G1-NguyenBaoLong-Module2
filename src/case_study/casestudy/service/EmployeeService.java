@@ -1,5 +1,7 @@
-package casestudy.service;
+package case_study.casestudy.service;
 
-public interface EmployeeService extends Service{
+import case_study.casestudy.service.Service;
+
+public interface EmployeeService extends Service {
 
 }

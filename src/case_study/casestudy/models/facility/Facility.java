@@ -1,4 +1,4 @@
-package casestudy.models.facility;
+package case_study.casestudy.models.facility;
 
 public abstract class Facility {
     private String nameService,

@@ -1,4 +1,4 @@
-package casestudy.util;
+package case_study.casestudy.util;
 
 import java.time.LocalDate;
 import java.time.Period;

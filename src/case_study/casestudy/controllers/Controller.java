@@ -1,7 +1,8 @@
-package casestudy.controllers;
+package case_study.casestudy.controllers;
 
-import casestudy.models.person.Employee;
-import casestudy.service.implement.*;
+
+
+import case_study.casestudy.service.implement.*;
 
 import java.io.IOException;
 import java.util.Scanner;

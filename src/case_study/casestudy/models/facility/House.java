@@ -1,4 +1,4 @@
-package casestudy.models.facility;
+package case_study.casestudy.models.facility;
 
 public class House extends Facility {
 

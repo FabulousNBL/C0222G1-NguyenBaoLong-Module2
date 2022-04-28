@@ -1,4 +1,4 @@
-package casestudy.models.person;
+package case_study.casestudy.models.person;
 
 import java.io.Serializable;
 
@@ -94,6 +94,6 @@ public abstract class Person implements Serializable {
                 ", gender=" + gender +
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
-                '}';
+                ',';
     }
 }

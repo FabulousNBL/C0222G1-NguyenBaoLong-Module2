@@ -1,7 +1,11 @@
-package casestudy.models;
+package case_study.casestudy.models;
 
-import casestudy.models.facility.Facility;
-import casestudy.models.person.Customer;
+
+import case_study.casestudy.models.facility.Facility;
+import case_study.casestudy.models.person.Customer;
+
+import java.util.Objects;
+
 
 public class Booking {
     private int idBooking ;
@@ -15,6 +19,19 @@ public class Booking {
       this.facility=facility;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Booking booking = (Booking) o;
+        return idBooking == booking.idBooking;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idBooking);
     }
 
     public int getIdBooking() {

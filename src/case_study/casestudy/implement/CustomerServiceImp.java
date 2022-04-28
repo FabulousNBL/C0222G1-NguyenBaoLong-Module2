@@ -1,6 +1,7 @@
-package casestudy.implement;
+package case_study.casestudy.implement;
 
-import casestudy.service.CustomerService;
+
+import case_study.casestudy.service.CustomerService;
 
 public class CustomerServiceImp implements CustomerService {
     @Override

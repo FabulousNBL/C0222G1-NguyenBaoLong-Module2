@@ -1,4 +1,4 @@
-package casestudy.service;
+package case_study.casestudy.service;
 
 import java.io.IOException;
 

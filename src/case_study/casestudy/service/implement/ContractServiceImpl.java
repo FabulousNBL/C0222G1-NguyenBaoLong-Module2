@@ -1,10 +1,11 @@
-package casestudy.service.implement;
+package case_study.casestudy.service.implement;
 
-import casestudy.models.Booking;
-import casestudy.models.Contract;
-import casestudy.models.person.Customer;
-import casestudy.service.ContractService;
-import casestudy.util.ReadAndWrite;
+
+
+import case_study.casestudy.models.Booking;
+import case_study.casestudy.models.Contract;
+import case_study.casestudy.models.person.Customer;
+import case_study.casestudy.service.ContractService;
 
 import java.io.IOException;
 import java.util.*;
@@ -12,22 +13,16 @@ import java.util.*;
 public class ContractServiceImpl implements ContractService {
     static List<Contract>contractList= new ArrayList<>();
     static Scanner input= new Scanner(System.in);
-
-
     @Override
     public void createNewContract() {
         Queue<Booking> bookingQueue = new LinkedList<>();
-
         Set<Booking> bookingSet = new BookingServiceImpl().sendBooking();
-
         for (Booking booking : bookingSet) {
             bookingQueue.add(booking);
         }
-
         while (!bookingQueue.isEmpty()) {
             Booking booking = bookingQueue.poll();
             Customer customer = booking.getCustomer();
-
             System.out.println("Đang tạo hợp đồng cho booking có thông tin : " + booking.toString());
             System.out.println("Đang tạo hợp đồng cho khách hàng có thông tin: " + customer.toString());
             System.out.println("Nhập id hợp đồng");
@@ -39,18 +34,15 @@ public class ContractServiceImpl implements ContractService {
             Contract contract = new Contract(customer, idContract, prePay, totalPay, booking);
             contractList.add(contract);
             System.out.println("Đã tạo hợp đồng :" + contract.toString());
-
         }
     }
-
     @Override
-    public void displayListContract() throws IOException {
+    public void displayListContract() {
 
         for (Contract contract:contractList) {
             System.out.println(contract.toString());
         }
     }
-
     @Override
     public void editContract() {
         CustomerServiceImpl customerService= new CustomerServiceImpl();

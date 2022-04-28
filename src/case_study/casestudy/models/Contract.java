@@ -1,6 +1,7 @@
-package casestudy.models;
+package case_study.casestudy.models;
 
-import casestudy.models.person.Customer;
+
+import case_study.casestudy.models.person.Customer;
 
 public class Contract {
     private Customer customer;
