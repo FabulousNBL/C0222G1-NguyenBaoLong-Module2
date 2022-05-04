@@ -22,6 +22,7 @@ public class FacilityServiceImpl implements FacilityService {
     public static final String RENT_TYPE = "^(Day|Month|Year|Hour)$";
     public static final String ROOM_STANDARD = "^(Vip|Normal|Single|Double)$";
     public static final String NAME_SERVICE = "^[A-Z][a-z]{1,10}$";
+    public static final String FILE_FACILITY = "src\\case_study\\casestudy\\data\\booking\\facility.csv";
 
 
     private static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
@@ -34,6 +35,7 @@ public class FacilityServiceImpl implements FacilityService {
     public static List<String[]> villas = new ArrayList<>();
     public static List<String[]> houses = new ArrayList<>();
     public static List<String[]> rooms = new ArrayList<>();
+    public static List<String[]> facilities = new ArrayList<>();
 
 
     public static void setFacilityIntegerMap(Map<Facility, Integer> facilityIntegerMap) {
@@ -42,43 +44,30 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void display() {
-//        for (String villa: Objects.requireNonNull(ReadAndWrite.readFileCsv(FILE_VILLA))){
-//            System.out.println(villa);
-//        }
-//        for (String house: Objects.requireNonNull(ReadAndWrite.readFileCsv(FILE_HOUSE))){
-//            System.out.println(house);
-//        }
-//        for (String room: Objects.requireNonNull(ReadAndWrite.readFileCsv(FILE_ROOM))){
-//            System.out.println(room);
-//        }
+
         facilityIntegerMap.clear();
-        villas = ReadAndWrite.readFile(FILE_VILLA);
+        facilities= ReadAndWrite.readFile("src\\case_study\\casestudy\\data\\booking\\facility.csv");
         Villa villa;
-        if (villas != null) {
-            for (String[] item : villas) {
-                villa = new Villa(item[0], item[1], item[2], Integer.parseInt(item[3]), Integer.parseInt(item[4]), Integer.parseInt(item[5]), Integer.parseInt(item[6]), item[7], Double.parseDouble(item[8]));
-                facilityIntegerMap.put(villa, 0);
-
-            }
-        }
-
-        houses = ReadAndWrite.readFile(FILE_HOUSE);
         House house;
-        if (houses != null) {
-            for (String[] item : houses) {
-                house = new House(item[0], item[1], item[2], Integer.parseInt(item[3]), Integer.parseInt(item[4]), Integer.parseInt(item[5]), Integer.parseInt(item[6]), item[7]);
-                facilityIntegerMap.put(house, 0);
+        Room room;
+        if (facilities != null) {
+            for (String[] item :facilities) {
+                if (item[0].equals("Villa")){
+                    villa= new Villa(item[0], item[1], item[2], Integer.parseInt(item[3]), Integer.parseInt(item[4]),
+                            Integer.parseInt(item[5]), Integer.parseInt(item[6]), item[7], Double.parseDouble(item[8]));
+                    facilityIntegerMap.put(villa,Integer.parseInt(item[9]));
+                }else if (item[0].equals("House")){
+                    house= new House(item[0], item[1], item[2], Integer.parseInt(item[3]), Integer.parseInt(item[4]),
+                            Integer.parseInt(item[5]), Integer.parseInt(item[6]), item[7]);
+                    facilityIntegerMap.put(house,Integer.parseInt(item[8]));
+                }else {
+                    room=  new Room(item[0],item[1],Integer.parseInt(item[2]),Integer.parseInt(item[3]),
+                            Integer.parseInt(item[4]),item[5],item[6]);
+                    facilityIntegerMap.put(room,Integer.parseInt(item[7]));
+                }
             }
         }
 
-        rooms= ReadAndWrite.readFile(FILE_ROOM);
-        Room room;
-        if (rooms != null) {
-            for (String[] item : rooms) {
-                room= new Room(item[0],item[1],Integer.parseInt(item[2]),Integer.parseInt(item[3]),Integer.parseInt(item[4]),item[5],item[6]);
-                facilityIntegerMap.put(room,0);
-            }
-        }
         for (Map.Entry<Facility, Integer> element : facilityIntegerMap.entrySet()) {
             System.out.println("Service " + element.getKey() + " rent: " + element.getValue());
         }
@@ -91,8 +80,7 @@ public class FacilityServiceImpl implements FacilityService {
     @Override
     public void addNewVilla() {
         String id = inputIDVilla();
-        System.out.println("Enter service's name");
-        String nameService = nameService();
+        String nameService = "Villa";
         System.out.println("1. Day    2. Month    3. Year    4. Hour");
         String rentType = rentType();
         System.out.println("Các loại phòng: ");
@@ -173,11 +161,7 @@ public class FacilityServiceImpl implements FacilityService {
                 floor, villaArea, rentFee, amountCustomer, id, poolArea);
         facilityIntegerMap.put(villa, 0);
         String line = nameService + "," + rentType + "," + roomLevel + "," + floor + "," + villaArea + "," + rentFee + "," + amountCustomer + "," + id + "," + poolArea;
-        ReadAndWrite.writeFile(FILE_VILLA, line);
-
-
-//        Villa villa1 = new Villa(nameService,rentType,roomLevel)
-
+        ReadAndWrite.writeFile(FILE_FACILITY,line+",0");
 
         System.out.println("Added successful");
     }
@@ -186,7 +170,7 @@ public class FacilityServiceImpl implements FacilityService {
     public void addNewHouse() {
 
         System.out.println("Enter service's name");
-        String nameService = nameService();
+        String nameService = "House";
         String id = inputIDHouse();
         System.out.println("Enter  room's type");
         String roomLevel = roomStandard();
@@ -251,14 +235,13 @@ public class FacilityServiceImpl implements FacilityService {
         House house = new House(nameService, rentType, roomLevel, floor, houseArea, rentCost, amountCustomer, id);
         facilityIntegerMap.put(house, 0);
         String line = nameService + "," + rentType + "," + roomLevel + "," + floor + "," + houseArea + "," + rentCost + "," + amountCustomer + "," + id;
-        ReadAndWrite.writeFile(FILE_HOUSE, line);
+        ReadAndWrite.writeFile("src\\case_study\\casestudy\\data\\booking\\facility.csv", line+",0");
         System.out.println("Added successful");
     }
 
     @Override
     public void addNewRoom() {
-        System.out.println("Nhập tên dịch vụ");
-        String nameService = nameService();
+        String nameService = "Room";
         String id = inputIDRoom();
         String freeService = freeService();
         System.out.println("1. Day    2. Month    3. Year    4. Hour");
@@ -308,7 +291,7 @@ public class FacilityServiceImpl implements FacilityService {
         Room room = new Room(nameService, rentType, roomArea, rentCost, amountCustomer, id, freeService);
         facilityIntegerMap.put(room, 0);
         String line = nameService + "," + rentType + "," + roomArea + "," + rentCost + "," + amountCustomer + "," + id + "," + freeService;
-        ReadAndWrite.writeFile(FILE_ROOM, line);
+        ReadAndWrite.writeFile("src\\case_study\\casestudy\\data\\booking\\facility.csv", line+",0");
         System.out.println("Added successful");
     }
 
@@ -330,11 +313,11 @@ public class FacilityServiceImpl implements FacilityService {
                 "You has input the wrong format,the right format is SVRO-XXXX( with XXXX are 4 random number )");
     }
 
-    private String nameService() {
-        return RegexData.regexStr(sc.nextLine(), NAME_SERVICE,
-                "You has input the wrong format," +
-                        "the right format is the first character is capital and the others are lower case");
-    }
+//    private String nameService() {
+//        return RegexData.regexStr(sc.nextLine(), NAME_SERVICE,
+//                "You has input the wrong format," +
+//                        "the right format is the first character is capital and the others are lower case");
+//    }
 
     private String rentType() {
         System.out.println("Enter rent's type ");

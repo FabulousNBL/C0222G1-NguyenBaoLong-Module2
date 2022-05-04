@@ -8,23 +8,39 @@ import case_study.casestudy.util.RegexData;
 
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class CustomerServiceImpl implements CustomerService {
+    public static List<Customer> getCustomer(){
+        List<Customer> customerList = new ArrayList<>();
+        List<String[]> list = ReadAndWrite.readFile(FILE_NAME);
+        for (String[] lists : list) {
+            customerList.add(new Customer(
+                    Integer.parseInt(lists[0]),
+                    lists[1],
+                    lists[2],
+                    lists[3],
+                    lists[4],
+                    lists[5],
+                    lists[6],
+                    lists[7],
+                    lists[8]));
+        }
+        return customerList;
+    }
     public static List<String[]> list;
     public static List<Customer>customerList= new LinkedList<>();
     Scanner input = new Scanner(System.in);
     public static final String FILE_NAME="src\\case_study\\casestudy\\data\\customer\\customer.csv";
-    public static List<Customer> getCustomerList() {
-        return customerList;
-    }
+
     public static final String REGEX_BIRTHDAY = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
-//
-//    public static void setCustomerList(List<Customer> customerList) {
-//        CustomerServiceImpl.customerList = customerList;
-//    }
+
+    public static void setCustomerList(List<Customer> customerList) {
+        CustomerServiceImpl.customerList = customerList;
+    }
 
     @Override
     public void display() {

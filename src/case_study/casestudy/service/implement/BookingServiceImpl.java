@@ -1,5 +1,6 @@
 package case_study.casestudy.service.implement;
 
+import case_study.casestudy.implement.CustomerServiceImp;
 import case_study.casestudy.models.Booking;
 import case_study.casestudy.models.facility.Facility;
 import case_study.casestudy.models.person.Customer;
@@ -16,9 +17,7 @@ public class BookingServiceImpl implements BookingService {
     public Set<Booking> sendBooking() {
         return bookingSet;
     }
-
-    public static Set<String[]> bookings= new HashSet<>();
-
+    public static Set<String>stringSet= new LinkedHashSet<>();
 
     @Override
     public void addNew() {
@@ -41,41 +40,47 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void displayListBooking() {
-        bookings= (Set<String[]>) ReadAndWrite.readFile(FILE_NAME);
 
-        for (Booking booking : bookingSet) {
-            System.out.println(booking.toString());
+        stringSet= ReadAndWrite.readSet(FILE_NAME);
+
+        for (Booking strings : bookingSet) {
+            System.out.println(strings);
         }
     }
 
     public static Customer chooseCustomer() {
-        List<Customer> customers = CustomerServiceImpl.getCustomerList();
+        CustomerServiceImpl customerService= new CustomerServiceImpl();
+        customerService.display();
         System.out.println("Danh sách khách hàng");
-        for (Customer customer : customers) {
-            System.out.println(customer.toString());
-        }
-        System.out.println("Nhập id khách hàng");
-        String id = sc.nextLine();
-        boolean check = true;
-        while (check) {
+        List<Customer> customers = CustomerServiceImpl.getCustomer();
+
+        while (true) {
+            System.out.println("Nhập id khách hàng");
+            String id = sc.nextLine();
+            boolean check= true;
             for (Customer customer : customers) {
                 if (customer.getIdCustomer().contains(id)) {
                     return customer;
                 } else {
-                    System.out.println("Không có khách hàng này !!");
+                   check= false;
                 }
             }
-            check = false;
+            if (!check){
+                System.out.println("Không có khách hàng này!!");
+            }
+
         }
-        return null;
+
     }
 
     public static Facility chooseFacility() {
+        FacilityServiceImpl facilityService= new FacilityServiceImpl();
+        facilityService.display();
         Map<Facility, Integer> list = FacilityServiceImpl.getFacilityIntegerMap();
-        System.out.println("Danh sách dịch vụ");
-        for (Map.Entry<Facility, Integer> entry : list.entrySet()) {
-            System.out.println(entry.getKey().toString());
-        }
+//        System.out.println("Danh sách dịch vụ");
+//        for (Map.Entry<Facility, Integer> entry : list.entrySet()) {
+//            System.out.println(entry.getKey().toString());
+//        }
         System.out.println("Nhập id dịch vụ");
         boolean check = true;
         String id = sc.nextLine();

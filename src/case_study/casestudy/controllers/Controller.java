@@ -12,7 +12,7 @@ public class Controller {
 
     public void displayMainMenu() throws Exception {
         boolean check = true;
-        int choice=0;
+
         while (true) {
             System.out.println("Option:");
             System.out.println("1. Employee Management");
@@ -21,28 +21,23 @@ public class Controller {
             System.out.println("4. Booking Management");
             System.out.println("5. Promotion Management");
             System.out.println("0. Exit");
-
-            try{
-                choice = Integer.parseInt(input.nextLine());
-            }catch (NumberFormatException e){
-                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại");
-            }
+            String choice = input.nextLine();
             switch (choice){
-                case 1:
+                case "1":
                     employeeManagement();
                     break;
-                case 2:
+                case "2":
                     customerManagement();
                     break;
-                case 3:
+                case "3":
                     facilityManagement();
                     break;
-                case 4:
+                case "4":
                     bookingManagement();
                     break;
-                case 5:
+                case "5":
                     break;
-                case 0:
+                case "0":
                     System.exit(0);
                 default:
                     System.out.println("Mời nhập lại");
