@@ -25,7 +25,27 @@ public class ReadAndWrite {
         }
         return null;
     }
+    public static void writePerson(String path, List<String> list){
+        File file= new File(path);
+        if (!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try(FileWriter fileWriter= new FileWriter(file);
+        BufferedWriter bufferedWriter= new BufferedWriter(fileWriter))
+        {
+            for (String item :list) {
+                bufferedWriter.write(item);
+                bufferedWriter.newLine();
+            }
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public static Set<String> readSet(String path){
         Set<String> set= new LinkedHashSet<>();
         File file= new File(path);
@@ -63,30 +83,6 @@ public class ReadAndWrite {
         }
     }
 
-//    public static Set<> readBinary(String path){
-//        File file = new File(path);
-//        Object obj;
-//        try(FileInputStream fis= new FileInputStream(file);
-//        ObjectInputStream ois= new ObjectInputStream(fis))
-//        {
-//            obj= ois.readObject();
-//            return (Map<Facility, Integer>) obj;
-//
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
-//    public static void writeFacility(String path,String line){
-//        for (Map.Entry<Facility, Integer> element : facilityIntegerMap.entrySet()) {
-//            System.out.println("Service " + element.getKey() + " rent: " + element.getValue());
-//        }
-//
-//        Map<Facility,Integer> readMap = new Map <Facility, Integer>();
-//    }
+
 
 }

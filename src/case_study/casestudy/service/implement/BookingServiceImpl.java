@@ -13,11 +13,12 @@ import java.util.*;
 public class BookingServiceImpl implements BookingService {
     static Scanner sc = new Scanner(System.in);
     static Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
+
     public static final String FILE_NAME="src\\case_study\\casestudy\\data\\booking\\booking.csv";
     public Set<Booking> sendBooking() {
         return bookingSet;
     }
-    public static Set<String>stringSet= new LinkedHashSet<>();
+
 
     @Override
     public void addNew() {
@@ -25,15 +26,16 @@ public class BookingServiceImpl implements BookingService {
         if (!bookingSet.isEmpty()) {
             id = bookingSet.size();
         }
-        Customer customer = chooseCustomer();
-        Facility facility = chooseFacility();
+        String customer = chooseCustomer();
+        String facility = chooseFacility();
         System.out.println("Nhập ngày bắt đầu thuê");
         String startDate = sc.nextLine();
         System.out.println("Nhập ngày trả phòng");
         String endDate = sc.nextLine();
-        Booking booking = new Booking(id, customer, facility, startDate, endDate);
-        bookingSet.add(booking);
-        String line= customer+","+facility+","+startDate+","+endDate;
+        System.out.println("Nhập kiểu dịch vụ");
+        String typeService= sc.nextLine();
+
+        String line= id+","+customer+","+facility+","+typeService+","+startDate+","+endDate;
         ReadAndWrite.writeFile(FILE_NAME,line);
         System.out.println("Đã booking thành công");
     }
@@ -41,14 +43,16 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void displayListBooking() {
 
-        stringSet= ReadAndWrite.readSet(FILE_NAME);
-
+        List<String[]> list= ReadAndWrite.readFile(FILE_NAME);
+        for (String[] item :list) {
+            bookingSet.add(new Booking(Integer.parseInt(item[0]),item[1],item[2],item[3],item[4],item[5]));
+        }
         for (Booking strings : bookingSet) {
             System.out.println(strings);
         }
     }
 
-    public static Customer chooseCustomer() {
+    public static String chooseCustomer() {
         CustomerServiceImpl customerService= new CustomerServiceImpl();
         customerService.display();
         System.out.println("Danh sách khách hàng");
@@ -60,7 +64,7 @@ public class BookingServiceImpl implements BookingService {
             boolean check= true;
             for (Customer customer : customers) {
                 if (customer.getIdCustomer().contains(id)) {
-                    return customer;
+                    return id;
                 } else {
                    check= false;
                 }
@@ -73,7 +77,7 @@ public class BookingServiceImpl implements BookingService {
 
     }
 
-    public static Facility chooseFacility() {
+    public static String chooseFacility() {
         FacilityServiceImpl facilityService= new FacilityServiceImpl();
         facilityService.display();
         Map<Facility, Integer> list = FacilityServiceImpl.getFacilityIntegerMap();
@@ -89,7 +93,7 @@ public class BookingServiceImpl implements BookingService {
             for (Map.Entry<Facility, Integer> map : list.entrySet()) {
                 if (map.getKey().getId().equals(id)) {
                     map.setValue(map.getValue() + 1);
-                    return map.getKey();
+                    return id;
                 }
                 check = false;
             }

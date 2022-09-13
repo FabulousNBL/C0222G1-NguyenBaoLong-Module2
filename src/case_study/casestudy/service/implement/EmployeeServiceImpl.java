@@ -12,7 +12,7 @@ import java.util.*;
 
 public class EmployeeServiceImpl implements EmployeeService {
 
-    public static final String FILE_NAME = "src\\case_study\\casestudy\\data\\employee\\employee.csv";
+    public static final String  FILE_NAME = "src\\case_study\\casestudy\\data\\employee\\employee.csv";
     public static final String REGEX_BIRTHDAY = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
     static List<Employee> employeeList = new ArrayList<>();
     static Scanner input = new Scanner(System.in);
@@ -173,14 +173,16 @@ public class EmployeeServiceImpl implements EmployeeService {
             employeeList.set(index, new Employee(idPerson, name, age, gender, address, email, phone, idEmp, salary, education, position));
             File file = new File(FILE_NAME);
             file.delete();
-
+            List<String> empList= new ArrayList<>();
             for (Employee employee : employeeList) {
                 String line = employee.getIdPerson() + "," + employee.getName() + "," + employee.getDateOfBirth() + "," +
                         employee.isGender() + "," + employee.getAddress() + "," + employee.getEmail() + "," +
                         employee.getPhone() + "," + employee.getIdEmployee() + "," + employee.getSalary() +
                         "," + employee.getEducation() + "," + employee.getPosition();
-                ReadAndWrite.writeFile(FILE_NAME, line);
+                empList.add(line);
+
             }
+            ReadAndWrite.writePerson(FILE_NAME, empList);
             System.out.println("success");
 
         } else {

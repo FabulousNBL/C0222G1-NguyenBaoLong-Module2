@@ -1,26 +1,24 @@
 package case_study.casestudy.models;
 
 
-import case_study.casestudy.models.person.Customer;
-
 public class Contract {
-    private Customer customer;
-    private String idContract,deposit,totalFee;
-    private Booking booking;
+    private String customer,idContract;
+    private int deposit,totalFee;
+    private int idBooking;
 
-    public Contract(Customer customer, String idContract, String deposit, String totalFee, Booking booking) {
+    public Contract(String customer, String idContract, int deposit, int totalFee, int idBooking) {
         this.customer = customer;
         this.idContract = idContract;
         this.deposit = deposit;
         this.totalFee = totalFee;
-        this.booking = booking;
+        this.idBooking = idBooking;
     }
 
-    public Customer getCustomer() {
+    public String getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(String customer) {
         this.customer = customer;
     }
 
@@ -32,28 +30,28 @@ public class Contract {
         this.idContract = idContract;
     }
 
-    public String getDeposit() {
+    public int getDeposit() {
         return deposit;
     }
 
-    public void setDeposit(String deposit) {
+    public void setDeposit(int deposit) {
         this.deposit = deposit;
     }
 
-    public String getTotalFee() {
+    public int getTotalFee() {
         return totalFee;
     }
 
-    public void setTotalFee(String totalFee) {
+    public void setTotalFee(int totalFee) {
         this.totalFee = totalFee;
     }
 
-    public Booking getBooking() {
-        return booking;
+    public int getIdBooking() {
+        return idBooking;
     }
 
-    public void setBooking(Booking booking) {
-        this.booking = booking;
+    public void setIdBooking(int idBooking) {
+        this.idBooking = idBooking;
     }
 
     @Override
@@ -63,7 +61,7 @@ public class Contract {
                 ", idContract='" + idContract + '\'' +
                 ", deposit='" + deposit + '\'' +
                 ", totalFee='" + totalFee + '\'' +
-                ", booking=" + booking +
+                ", booking=" + idBooking +
                 '}';
     }
 }

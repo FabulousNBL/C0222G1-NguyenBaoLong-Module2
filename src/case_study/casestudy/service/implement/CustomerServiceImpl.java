@@ -155,14 +155,15 @@ public class CustomerServiceImpl implements CustomerService {
             customerList.set(index,new Customer(idPerson,name,age,gender,address,email,phone,customerID,typeCustomer));
             File file= new File(FILE_NAME);
             file.delete();
-
+            List<String > cusList= new ArrayList<>();
             for (Customer item :customerList) {
                String edit = item.getIdPerson()+","+item.getName()+","+item.getDateOfBirth()+
                         ","+item.isGender()+","+item.getAddress()+","+item.getEmail()+","+
                         item.getPhone()+","+item.getIdCustomer()+","+item.getCustomerType();
-                ReadAndWrite.writeFile(FILE_NAME,edit);
-            }
+               cusList.add(edit);
 
+            }
+            ReadAndWrite.writePerson(FILE_NAME,cusList);
         }else {
             System.out.println("Chưa có khách hàng này!");
         }

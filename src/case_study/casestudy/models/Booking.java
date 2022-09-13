@@ -9,30 +9,21 @@ import java.util.Objects;
 
 public class Booking {
     private int idBooking ;
-    private String idCustomer, serviceName, typeService,startDate,endDate;
-    private Customer customer;
-    private Facility facility;
+    private String idCustomer, idFacility, typeService,startDate,endDate;
+//    private Customer customer;
+//    private Facility facility;
 
-    public Booking(int idBooking, Customer customer, Facility facility, String startDate, String endDate) {
+
+    public Booking(int idBooking, String idCustomer, String idFacility, String typeService, String startDate, String endDate) {
         this.idBooking = idBooking;
-         this.customer=customer;
-      this.facility=facility;
+        this.idCustomer = idCustomer;
+        this.idFacility = idFacility;
+        this.typeService = typeService;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Booking booking = (Booking) o;
-        return idBooking == booking.idBooking;
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(idBooking);
-    }
 
     public int getIdBooking() {
         return idBooking;
@@ -40,22 +31,6 @@ public class Booking {
 
     public void setIdBooking(int idBooking) {
         this.idBooking = idBooking;
-    }
-
-    public String getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public CharSequence getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
     }
 
     public String getIdCustomer() {
@@ -66,12 +41,12 @@ public class Booking {
         this.idCustomer = idCustomer;
     }
 
-    public String getServiceName() {
-        return serviceName;
+    public String getIdFacility() {
+        return idFacility;
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
+    public void setIdFacility(String idFacility) {
+        this.idFacility = idFacility;
     }
 
     public String getTypeService() {
@@ -82,31 +57,30 @@ public class Booking {
         this.typeService = typeService;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public Facility getFacility() {
-        return facility;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setFacility(Facility facility) {
-        this.facility = facility;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
-
     @Override
     public String toString() {
         return "Booking{" +
                 "idBooking=" + idBooking +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", idCustomer='" + customer.getIdCustomer() + '\'' +
-                ", serviceName='" + facility.getNameService() + '\'' +
-                ", typeService='" + facility.getRentType() + '\'' +
+                ", idCustomer='" + idCustomer + '\'' +
+                ", idFacility='" + idFacility + '\'' +
+                ", typeService='" + typeService + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
                 '}';
     }
 }

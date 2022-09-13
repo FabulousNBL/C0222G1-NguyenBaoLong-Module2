@@ -52,11 +52,11 @@ public class FacilityServiceImpl implements FacilityService {
         Room room;
         if (facilities != null) {
             for (String[] item :facilities) {
-                if (item[0].equals("Villa")){
+                if (item[0].contains("Villa")){
                     villa= new Villa(item[0], item[1], item[2], Integer.parseInt(item[3]), Integer.parseInt(item[4]),
                             Integer.parseInt(item[5]), Integer.parseInt(item[6]), item[7], Double.parseDouble(item[8]));
                     facilityIntegerMap.put(villa,Integer.parseInt(item[9]));
-                }else if (item[0].equals("House")){
+                }else if (item[0].contains("House")){
                     house= new House(item[0], item[1], item[2], Integer.parseInt(item[3]), Integer.parseInt(item[4]),
                             Integer.parseInt(item[5]), Integer.parseInt(item[6]), item[7]);
                     facilityIntegerMap.put(house,Integer.parseInt(item[8]));
